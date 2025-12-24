@@ -2,7 +2,7 @@
 .highlight table pre { margin: 0; }
 .highlight .cm {
   color: #999988;
-  font-style: italic;
+  font-style: monospace;
 }
 .highlight .cp {
   color: #999999;
@@ -10,16 +10,16 @@
 }
 .highlight .c1 {
   color: #999988;
-  font-style: italic;
+  font-style: monospace;
 }
 .highlight .cs {
   color: #999999;
   font-weight: bold;
-  font-style: italic;
+  font-style: monospace;
 }
 .highlight .c, .highlight .cd {
   color: #999988;
-  font-style: italic;
+  font-style: monospace;
 }
 .highlight .err {
   color: #a61717;
@@ -205,5 +205,5 @@
   color: #bbbbbb;
 }
 .highlight {
-  background-color: #f8f8f8;
+  background-color: #59185a40;
 }

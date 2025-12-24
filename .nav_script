@@ -1,0 +1,10 @@
+---
+prev: index.html
+---
+
+{{ page.prev }}
+<a href="{{ page.prev }}">Previous Page</a>
+
+
+
+mv .nav_script _includes
