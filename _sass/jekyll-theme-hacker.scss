@@ -1,5 +1,5 @@
-@use "rouge-base16-dark" as *;
-@use "default_colors" as *;
+@import "rouge-base16-dark";
+@import "default_colors";
 
 $body-background: $cod-grey !default;
 $body-foreground: $gallery !default;
