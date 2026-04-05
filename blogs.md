@@ -3,7 +3,9 @@ layout: default
 title: Blogs
 ---
 
-# Blogs
+## Blogs
+
+istg I have posts in all phases of writing, and this text will disappear soon
 
 <ul>
 {% for post in site.pages %}

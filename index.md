@@ -68,7 +68,7 @@ ping        - How to reach me
 ps          - Blogs topics
 clear       - Clear term`,
 
-  banner: `I'm <span style="color:#63c0f5">Devansh</span>, I also go by bittcrak online!! I am trying to get 'crakd'(meaning I want to get better)
+  whoami: `I'm <span style="color:#63c0f5">Devansh</span>, I also go by bittcrak online!! I am trying to get 'crakd'(meaning I want to get better)
 
 wannabe security researcher, currently somewhere in the middle of the pipeline; I believe in:
 - Human Curiosity can never be replaced with AI Efficiency
@@ -77,12 +77,13 @@ wannabe security researcher, currently somewhere in the middle of the pipeline; 
 - Reverse Engineering is peak discipline
 - Maths is required skill for getting cracked`,
 
-  ps: `Technical Skills:
-- Fast Learner
+  ps: `Topics that I revolve around usually:
+- OS dev
+- Algorithms and Cryptography
 - Reverse Engineering
 - Binary Exploitation 
 - Malware Analysis
-- Scripting & Programming
+- Scripting & Programming ttps
 - CTFs`,
 
  ping: `Find me at:
