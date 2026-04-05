@@ -11,28 +11,51 @@
   </head>
 
   <body>
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="terminal-title" style="margin-left: 50px">{{ site.title | default: site.github.repository_name }}:~</div>
+      </div>
 
-    <header>
+      <nav class="terminal-tabs">
+        <a href="{{ '/' | relative_url }}" class="tab-item {% if page.url == '/' %}is-active{% endif %}">main()</a>
+        <a href="{{ '/about' | relative_url }}" class="tab-item {% if page.url contains 'about' %}is-active{% endif %}">About</a>
+        <a href="{{ '/blogs' | relative_url }}" class="tab-item {% if page.url contains 'blogs' %}is-active{% endif %}">blogs</a>
+        <a href="/feed.xml" class="tab-item" style="margin-left: auto">RSS</a>
+      </nav>
+
       <div class="container">
-        <a id="a-title" href="{{ '/' | relative_url }}">
-          <h1>{{ site.title | default: site.github.repository_name }}</h1>
-        </a>
-        <h2>{{ site.description | default: site.github.project_tagline }}</h2>
-
-        <section id="downloads">
-          {% if site.show_downloads %}
-            <a href="{{ site.github.zip_url }}" class="btn">Download as .zip</a>
-            <a href="{{ site.github.tar_url }}" class="btn">Download as .tar.gz</a>
-          {% endif %}
-          <a href="{{ site.github.repository_url }}" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        <section id="main_content">
+          {{ content }}
         </section>
       </div>
-    </header>
-
-    <div class="container">
-      <section id="main_content">
-        {{ content }}
-      </section>
     </div>
+    <script>
+             // Add copy buttons to code blocks
+        document.querySelectorAll('pre').forEach(function(pre) {
+          const button = document.createElement('button');
+          button.className = 'btn';
+          button.textContent = 'Copy';
+          
+          button.addEventListener('click', function() {
+            const code = pre.querySelector('code') || pre;
+            const text = code.textContent;
+            
+            navigator.clipboard.writeText(text).then(function() {
+              button.textContent = 'Copied!';
+              
+              setTimeout(function() {
+                button.textContent = 'Copy';
+              }, 2000);
+            });
+          });
+          
+          pre.appendChild(button);
+      });
+    </script>
   </body>
 </html>

@@ -35,59 +35,213 @@
 
 
 <!-- Begin Jekyll SEO tag v2.8.0 -->
-<title>bittle | bittcrak’s blog page</title>
+<title>main() | bittcrak@home</title>
 <meta name="generator" content="Jekyll v4.4.1" />
-<meta property="og:title" content="bittle" />
+<meta property="og:title" content="main()" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="bittcrak’s blog page" />
-<meta property="og:description" content="bittcrak’s blog page" />
+<meta name="description" content="bittcrak blogs" />
+<meta property="og:description" content="bittcrak blogs" />
 <link rel="canonical" href="http://localhost:4000/" />
 <meta property="og:url" content="http://localhost:4000/" />
-<meta property="og:site_name" content="bittle" />
+<meta property="og:site_name" content="bittcrak@home" />
 <meta property="og:type" content="website" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="bittle" />
+<meta property="twitter:title" content="main()" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","description":"bittcrak’s blog page","headline":"bittle","name":"bittle","url":"http://localhost:4000/"}</script>
+{"@context":"https://schema.org","@type":"WebSite","description":"bittcrak blogs","headline":"main()","name":"bittcrak@home","url":"http://localhost:4000/"}</script>
 <!-- End Jekyll SEO tag -->
 
   </head>
 
   <body>
+    <div class="terminal-window">
+      <div class="terminal-header">
+        <div class="terminal-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="terminal-title" style="margin-left: 50px">bittcrak@home:~</div>
+      </div>
 
-    <header>
+      <nav class="terminal-tabs">
+        <a href="/" class="tab-item is-active">main()</a>
+        <a href="/about" class="tab-item ">About</a>
+        <a href="/blogs" class="tab-item ">blogs</a>
+        <a href="/feed.xml" class="tab-item" style="margin-left: auto">RSS</a>
+      </nav>
+
       <div class="container">
-        <a id="a-title" href="/">
-          <h1>bittle</h1>
-        </a>
-        <h2>bittcrak's blog page</h2>
+        <section id="main_content">
+          <style>
+.terminal-line {
+  margin-bottom: 8px;
+}
 
-        <section id="downloads">
-          
-          <a href="" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+.prompt {
+  color: #b5e853;
+}
+
+.prompt-user {
+  color: #63c0f5;
+}
+
+.prompt-path {
+  color: #aa759f;
+}
+
+.command {
+  color: #ebdbb2;
+}
+
+.output {
+  color: #928374;
+  margin-left: 0;
+  margin-bottom: 14px;
+}
+
+.output-muted {
+  color: #888;
+}
+
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+}
+
+#terminal-input {
+  background: transparent;
+  border: none;
+  color: #ebdbb2;
+  font-family: inherit;
+  font-size: 16px;
+  outline: none;
+  flex: 1;
+  caret-color: #b5e853;
+}
+</style>
+
+<div class="terminal-line output-muted">MeowOS 12.0.1-amd64 x86_64 GNU/Linux</div>
+<div class="terminal-line output-muted">Type 'help' for help.</div>
+<div class="terminal-line" style="margin-top: 16px;"></div>
+<div id="terminal-output"></div>
+<div class="terminal-input-line">
+  <span class="prompt"><span class="prompt-user">user</span>@<span class="prompt-path">tinkerer</span>:~$&nbsp;</span>
+  <input type="text" id="terminal-input" autofocus="" autocomplete="off" spellcheck="false" />
+</div>
+
+<script>
+const commands = {
+  help: `Available commands:
+whoami      - who is bittcrak?
+ping        - How to reach me
+ps          - Blogs topics
+clear       - Clear term`,
+
+  banner: `I'm <span style="color:#63c0f5">Devansh</span>, I also go by bittcrak online!! I am trying to get 'crakd'(meaning I want to get better)
+
+wannabe security researcher, currently somewhere in the middle of the pipeline; I believe in:
+- Human Curiosity can never be replaced with AI Efficiency
+- Malwares are peak software engineering
+- Exploit Development is peak problem solving
+- Reverse Engineering is peak discipline
+- Maths is required skill for getting cracked`,
+
+  ps: `Technical Skills:
+- Fast Learner
+- Reverse Engineering
+- Binary Exploitation 
+- Malware Analysis
+- Scripting & Programming
+- CTFs`,
+
+ ping: `Find me at:
+- <a href="https://github.com/bittcrak" style="color:#63c0f5">Github</a>
+- <a href="https://linkedin.com/bittcrak" style="color:#63c0f5">Linkedin</a>
+`,
+
+  cat: `Sometimes I dump information that I found interesting in case some lonely scholar happens to cross paths.
+
+They are in <span style="color:#63c0f5">/blogs</span> section in the nav bar.
+
+Topics include:
+- Challenges from CTF's HTB and such
+- Rabbit hole deep dives`,
+
+  clear: 'CLEAR'
+};
+
+const terminalOutput = document.getElementById('terminal-output');
+const terminalInput = document.getElementById('terminal-input');
+const terminal = document.getElementById('main_content');
+
+function addOutput(cmd, output) {
+  const cmdLine = document.createElement('div');
+  cmdLine.className = 'terminal-line';
+  cmdLine.innerHTML = `<span class="prompt"><span class="prompt-user">guest</span>@<span class="prompt-path">tinkerer</span>:~$&nbsp;</span><span class="command">${cmd}</span>`;
+  terminalOutput.appendChild(cmdLine);
+
+  if (output !== 'CLEAR') {
+    const outputDiv = document.createElement('div');
+    outputDiv.className = 'terminal-line output';
+    outputDiv.innerHTML = output.replace(/\n/g, '<br>');
+    terminalOutput.appendChild(outputDiv);
+  }
+}
+
+function processCommand(cmd) {
+  const trimmed = cmd.trim().toLowerCase();
+  
+  if (trimmed === '') return;
+  
+  if (trimmed === 'clear') {
+    terminalOutput.innerHTML = '';
+    return;
+  }
+
+  const output = commands[trimmed] || `Command not found: ${cmd}. Type 'help' for help`;
+  addOutput(cmd, output);
+  
+  terminal.scrollTop = terminal.scrollHeight;
+}
+
+terminalInput.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    processCommand(terminalInput.value);
+    terminalInput.value = '';
+  }
+});
+
+// Focus input when clicking anywhere in terminal
+terminal.addEventListener('click', () => terminalInput.focus());
+</script>
+
+
         </section>
       </div>
-    </header>
-
-    <div class="container">
-      <section id="main_content">
-        <h1 id="landing-page">Landing page</h1>
-<p>Title body text</p>
-
-<h2 id="about">About</h2>
-<p>about body text</p>
-
-<h2 id="index">index</h2>
-<p>index for blogs</p>
-
-<h3 id="todo">ToDO:</h3>
-<ol>
-  <li>change the layout</li>
-  <li>add terminal thingy</li>
-  <li>change color scheme</li>
-</ol>
-
-      </section>
     </div>
+    <script>
+             // Add copy buttons to code blocks
+        document.querySelectorAll('pre').forEach(function(pre) {
+          const button = document.createElement('button');
+          button.className = 'btn';
+          button.textContent = 'Copy';
+          
+          button.addEventListener('click', function() {
+            const code = pre.querySelector('code') || pre;
+            const text = code.textContent;
+            
+            navigator.clipboard.writeText(text).then(function() {
+              button.textContent = 'Copied!';
+              
+              setTimeout(function() {
+                button.textContent = 'Copy';
+              }, 2000);
+            });
+          });
+          
+          pre.appendChild(button);
+      });
+    </script>
   </body>
 </html>

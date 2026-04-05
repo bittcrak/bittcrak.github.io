@@ -1,4 +1,6 @@
-title: bittle
-description: bittcrak's blog page
+title: bittcrak@home
+description: bittcrak blogs
 google_analytics: [tbd]
 theme: jekyll-theme-hacker
+plugins: 
+  - jekyll-feed
